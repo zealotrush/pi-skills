@@ -23,11 +23,17 @@ The binary downloads its GGUF model automatically if missing.
 
 ## Output
 
-Plain text timestamped in 15 second chunks:
+Plain text timestamped in 15 second chunks is written to stdout:
 
 ```text
 [00:00-00:15] transcript text
 [00:15-00:30] more transcript text
+```
+
+Model/GGML diagnostic logs are written to stderr. Redirect stderr to hide them:
+
+```bash
+{baseDir}/transcribe.sh <audio-file> 2>/dev/null
 ```
 
 ## Requirements
