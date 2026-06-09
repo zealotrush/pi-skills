@@ -4,6 +4,11 @@ import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 import TurndownService from "turndown";
 import { gfm } from "turndown-plugin-gfm";
+import { setGlobalDispatcher, ProxyAgent } from "undici";
+
+const proxyUrl = process.env.https_proxy || process.env.HTTPS_PROXY ||
+                 process.env.http_proxy || process.env.HTTP_PROXY;
+if (proxyUrl) setGlobalDispatcher(new ProxyAgent(proxyUrl));
 
 const args = process.argv.slice(2);
 
